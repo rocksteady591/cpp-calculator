@@ -1,5 +1,3 @@
-// В этом файле определения функций.
-// За основу возьмите решение предыдущей задачи.
 #include "calculator.h"
 #include <iostream>
 #include <string>
@@ -39,9 +37,8 @@ bool ReadOperation(std::string& operation){
     std::cin >> operation;
     if(!IsCorrectOperation(operation)){
         return false;
-    }else{
-        return true;
     }
+    return true;
 }
 
 bool RunCalculatorCycle(){
@@ -54,53 +51,52 @@ bool RunCalculatorCycle(){
         if(!ReadOperation(operation)){
             std::cerr << "Error: Unknown token " << operation;
             return false;
-        }else{
-            Number num = 0;
-            if(operation == "+"){
-                if(!ReadNumber(num)){
-                    return false;
-                }
-                number += num;
-            }else if(operation == "-"){
-                if(!ReadNumber(num)){
-                    return false;
-                }
-                number -= num;
-            }else if(operation == "*"){
-                if(!ReadNumber(num)){
-                    return false;
-                }
-                number *= num;
-            }else if(operation == "**"){
-                if(!ReadNumber(num)){
-                    return false;
-                }
-                number = std::pow(number, num);
-            }else if(operation == "/"){
-                if(!ReadNumber(num)){
-                    return false;
-                }
-                number /= num;
-            }else if(operation == "="){
-                std::cout << number << std::endl;
-            }else if(operation == ":"){
-                if(!ReadNumber(num)){
-                    return false;
-                }
-                number = num;
-            }else if(operation == "c"){
-                number = 0;
-            }else if(operation == "q"){
-                return true;
-            }else if(operation == "s"){
-                MEMORY = {true, number};
-            }else if(operation == "l"){
-                if(MEMORY.first == false){
-                    std::cerr << "Error: Memory is empty" << std::endl;
-                    return false;
-                }else{
-                    number = MEMORY.second;
-                }
+        }
+        Number num = 0;
+        if(operation == "+"){
+            if(!ReadNumber(num)){
+                return false;
+            }
+            number += num;
+        }else if(operation == "-"){
+            if(!ReadNumber(num)){
+                return false;
+            }
+            number -= num;
+        }else if(operation == "*"){
+            if(!ReadNumber(num)){
+                return false;
+            }
+            number *= num;
+        }else if(operation == "**"){
+            if(!ReadNumber(num)){
+                return false;
+            }
+            number = std::pow(number, num);
+        }else if(operation == "/"){
+            if(!ReadNumber(num)){
+                return false;
+            }
+            number /= num;
+        }else if(operation == "="){
+            std::cout << number << std::endl;
+        }else if(operation == ":"){
+            if(!ReadNumber(num)){
+                return false;
+            }
+            number = num;
+        }else if(operation == "c"){
+            number = 0;
+        }else if(operation == "q"){
+            return true;
+        }else if(operation == "s"){
+            MEMORY = {true, number};
+        }else if(operation == "l"){
+            if(MEMORY.first == false){
+                std::cerr << "Error: Memory is empty" << std::endl;
+                return false;
+            }else{
+                number = MEMORY.second;
             }
         }
     }

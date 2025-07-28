@@ -1,7 +1,10 @@
 #include "calculator.h"
 
-#include <iostream>
-
 int main(){
     bool result = RunCalculatorCycle();
+    if(result){
+        return 0;
+    }else{
+        return -1;
+    }
 }
