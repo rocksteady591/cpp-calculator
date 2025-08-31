@@ -1,0 +1,8 @@
+#!/bin/bash
+DYLD_IMAGE_SUFFIX=_debug
+export DYLD_IMAGE_SUFFIX
+DYLD_FRAMEWORK_PATH=/Users/hyperion/Qt/6.5.3/macos/lib${DYLD_FRAMEWORK_PATH:+:$DYLD_FRAMEWORK_PATH}
+export DYLD_FRAMEWORK_PATH
+QT_PLUGIN_PATH=/Users/hyperion/Qt/6.5.3/macos/plugins${QT_PLUGIN_PATH:+:$QT_PLUGIN_PATH}
+export QT_PLUGIN_PATH
+exec "$@"
