@@ -692,9 +692,7 @@ mainwindow.o: ../../../submission/mainwindow.cpp ../../../submission/mainwindow.
 		/Users/hyperion/Qt/6.5.3/macos/lib/QtWidgets.framework/Headers/qmainwindow.h \
 		ui_mainwindow.h \
 		/Users/hyperion/Qt/6.5.3/macos/lib/QtCore.framework/Headers/QDebug \
-		/Users/hyperion/Qt/6.5.3/macos/lib/QtCore.framework/Headers/qdebug.h \
-		/Users/hyperion/Qt/6.5.3/macos/lib/QtCore.framework/Headers/QRegularExpression \
-		/Users/hyperion/Qt/6.5.3/macos/lib/QtCore.framework/Headers/qregularexpression.h
+		/Users/hyperion/Qt/6.5.3/macos/lib/QtCore.framework/Headers/qdebug.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../../../submission/mainwindow.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 

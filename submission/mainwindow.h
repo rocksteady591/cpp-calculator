@@ -10,6 +10,8 @@ class MainWindow;
 }
 QT_END_NAMESPACE
 
+using Number = double;
+
 enum class Operation{
     NO_OPERATION,
     ADDITION,
@@ -25,7 +27,6 @@ class MainWindow : public QMainWindow {
 public:
     MainWindow(QWidget* parent = nullptr);
     ~MainWindow();
-    void SetText(const QString& text);
     void AddText(const QString& suffix);
     QString RemoveTrailingZeroes(const QString &text);
     QString NormalizeNumber(const QString &text);
@@ -82,10 +83,11 @@ private slots:
     void on_pb_memory_read_clicked();
 
 private:
+    void SetText(const QString& text);
     Ui::MainWindow* ui;
     Calculator calculator_;
     QString input_number_;
-    double active_number_;
+    Number active_number_;
     Operation current_operation_ = Operation::NO_OPERATION;
 };
 
