@@ -14,9 +14,9 @@ EQ            = =
 
 CC            = /Library/Developer/CommandLineTools/usr/bin/clang
 CXX           = /Library/Developer/CommandLineTools/usr/bin/clang++
-DEFINES       = -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_TESTLIB_LIB -DQT_CORE_LIB -DQT_TESTCASE_BUILDDIR='"/Users/hyperion/Documents/qt-projects/cpp-qt/problems/sprint2/final-task/build/Qt_6_5_3_for_macOS-Debug/tests"' -DQT_QML_DEBUG
+DEFINES       = -DPRAC_TESTS -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_TESTLIB_LIB -DQT_CORE_LIB -DQT_TESTCASE_BUILDDIR='"/Users/hyperion/Documents/qt-projects/cpp-qt/problems/sprint3/template-calculator/build/Qt_6_5_3_for_macOS-Debug/tests"' -DQT_QML_DEBUG
 CFLAGS        = -pipe -g $(EXPORT_ARCH_ARGS) -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -mmacosx-version-min=11.0 -Wall -Wextra $(DEFINES)
-CXXFLAGS      = -pipe -stdlib=libc++ -g -std=gnu++1z $(EXPORT_ARCH_ARGS) -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -mmacosx-version-min=11.0 -Wall -Wextra $(DEFINES)
+CXXFLAGS      = -pipe -stdlib=libc++ -g -std=gnu++2a $(EXPORT_ARCH_ARGS) -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -mmacosx-version-min=11.0 -Wall -Wextra $(DEFINES)
 INCPATH       = -I../../../tests -I. -I../../../submission -I/Users/hyperion/Documents/qt-projects/cpp-qt/mocks_library -I/Users/hyperion/Qt/6.5.3/macos/lib/QtWidgets.framework/Headers -I/Users/hyperion/Qt/6.5.3/macos/lib/QtGui.framework/Headers -I/Users/hyperion/Qt/6.5.3/macos/lib/QtTest.framework/Headers -I/Users/hyperion/Qt/6.5.3/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/OpenGL.framework/Headers -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/AGL.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/OpenGL.framework/Headers -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/AGL.framework/Headers -I/Users/hyperion/Qt/6.5.3/macos/mkspecs/macx-clang -F/Users/hyperion/Qt/6.5.3/macos/lib
 QMAKE         = /Users/hyperion/Qt/6.5.3/macos/bin/qmake
 DEL_FILE      = rm -f
@@ -37,7 +37,7 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = tests1.0.0
-DISTDIR = /Users/hyperion/Documents/qt-projects/cpp-qt/problems/sprint2/final-task/build/Qt_6_5_3_for_macOS-Debug/tests/.tmp/tests1.0.0
+DISTDIR = /Users/hyperion/Documents/qt-projects/cpp-qt/problems/sprint3/template-calculator/build/Qt_6_5_3_for_macOS-Debug/tests/.tmp/tests1.0.0
 LINK          = /Library/Developer/CommandLineTools/usr/bin/clang++
 LFLAGS        = -stdlib=libc++ -headerpad_max_install_names $(EXPORT_ARCH_ARGS) -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -mmacosx-version-min=11.0 -Wl,-rpath,@executable_path/../Frameworks -Wl,-rpath,/Users/hyperion/Qt/6.5.3/macos/lib
 LIBS          = $(SUBLIBS) -F/Users/hyperion/Qt/6.5.3/macos/lib -framework QtWidgets -framework QtGui -framework ImageIO -framework Metal -framework QtTest -framework Security -framework AppKit -framework ApplicationServices -framework Foundation -framework QtCore -framework IOKit -framework DiskArbitration -framework AGL -framework OpenGL   
@@ -53,10 +53,8 @@ OBJECTS_DIR   = ./
 ####### Files
 
 SOURCES       = ../../../tests/tests.cpp \
-		../../../submission/calculator.cpp \
 		../../../submission/mainwindow.cpp moc_mainwindow.cpp
 OBJECTS       = tests.o \
-		calculator.o \
 		mainwindow.o \
 		moc_mainwindow.o
 DIST          = /Users/hyperion/Qt/6.5.3/macos/mkspecs/features/spec_pre.prf \
@@ -225,9 +223,14 @@ DIST          = /Users/hyperion/Qt/6.5.3/macos/mkspecs/features/spec_pre.prf \
 		/Users/hyperion/Qt/6.5.3/macos/mkspecs/features/exceptions.prf \
 		/Users/hyperion/Qt/6.5.3/macos/mkspecs/features/yacc.prf \
 		/Users/hyperion/Qt/6.5.3/macos/mkspecs/features/lex.prf \
-		/Users/hyperion/Documents/qt-projects/cpp-qt/problems/tests/tests.pro ../../../submission/calculator.h \
-		../../../submission/mainwindow.h ../../../tests/tests.cpp \
-		../../../submission/calculator.cpp \
+		/Users/hyperion/Documents/qt-projects/cpp-qt/problems/tests/tests.pro ../../../tests/utils.h \
+		../../../tests/calculator_tests.h \
+		../../../submission/mainwindow.h \
+		../../../submission/calculator.h \
+		../../../submission/controller.h \
+		../../../submission/enums.h \
+		../../../submission/pow.h \
+		../../../submission/rational.h ../../../tests/tests.cpp \
 		../../../submission/mainwindow.cpp
 QMAKE_TARGET  = tests
 DESTDIR       = 
@@ -237,12 +240,12 @@ TARGET        = tests.app/Contents/MacOS/tests
 EXPORT_QMAKE_MAC_SDK = macosx
 EXPORT_QMAKE_MAC_SDK_VERSION = 15.5
 EXPORT_QMAKE_XCODE_DEVELOPER_PATH = /Library/Developer/CommandLineTools
-EXPORT__QMAKE_STASH_ = /Users/hyperion/Documents/qt-projects/cpp-qt/problems/sprint2/final-task/build/Qt_6_5_3_for_macOS-Debug/.qmake.stash
+EXPORT__QMAKE_STASH_ = /Users/hyperion/Documents/qt-projects/cpp-qt/problems/sprint3/template-calculator/build/Qt_6_5_3_for_macOS-Debug/.qmake.stash
 EXPORT_VALID_ARCHS = x86_64 arm64
 EXPORT_DEFAULT_ARCHS = arm64
 EXPORT_ARCHS = $(filter $(EXPORT_VALID_ARCHS), $(if $(ARCHS), $(ARCHS), $(if $(EXPORT_DEFAULT_ARCHS), $(EXPORT_DEFAULT_ARCHS), $(EXPORT_VALID_ARCHS))))
 EXPORT_ARCH_ARGS = $(foreach arch, $(if $(EXPORT_ARCHS), $(EXPORT_ARCHS), $(EXPORT_VALID_ARCHS)), -arch $(arch))
-EXPORT__PRO_FILE_ = /Users/hyperion/Documents/qt-projects/cpp-qt/problems/sprint2/final-task/tests/tests.pro
+EXPORT__PRO_FILE_ = /Users/hyperion/Documents/qt-projects/cpp-qt/problems/sprint3/template-calculator/tests/tests.pro
 
 
 include /Users/hyperion/Qt/6.5.3/macos/mkspecs/features/mac/sdk.mk
@@ -620,8 +623,8 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
-	$(COPY_FILE) --parents ../../../submission/calculator.h ../../../submission/mainwindow.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../../../tests/tests.cpp ../../../submission/calculator.cpp ../../../submission/mainwindow.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../../../tests/utils.h ../../../tests/calculator_tests.h ../../../submission/mainwindow.h ../../../submission/calculator.h ../../../submission/controller.h ../../../submission/enums.h ../../../submission/pow.h ../../../submission/rational.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../../../tests/tests.cpp ../../../submission/mainwindow.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../../../submission/mainwindow.ui $(DISTDIR)/
 
 
@@ -632,7 +635,7 @@ clean: compiler_clean
 
 distclean: clean 
 	-$(DEL_FILE) -r tests.app
-	-$(DEL_FILE) /Users/hyperion/Documents/qt-projects/cpp-qt/problems/sprint2/final-task/build/Qt_6_5_3_for_macOS-Debug/tests/target_wrapper.sh /Users/hyperion/Documents/qt-projects/cpp-qt/problems/sprint2/final-task/build/Qt_6_5_3_for_macOS-Debug/tests/rcc_wrapper.sh /Users/hyperion/Documents/qt-projects/cpp-qt/problems/sprint2/final-task/build/Qt_6_5_3_for_macOS-Debug/tests/rcc_wrapper.sh /Users/hyperion/Documents/qt-projects/cpp-qt/problems/sprint2/final-task/build/Qt_6_5_3_for_macOS-Debug/tests/moc_wrapper.sh /Users/hyperion/Documents/qt-projects/cpp-qt/problems/sprint2/final-task/build/Qt_6_5_3_for_macOS-Debug/tests/uic_wrapper.sh /Users/hyperion/Documents/qt-projects/cpp-qt/problems/sprint2/final-task/build/Qt_6_5_3_for_macOS-Debug/tests/uic_wrapper.sh
+	-$(DEL_FILE) /Users/hyperion/Documents/qt-projects/cpp-qt/problems/sprint3/template-calculator/build/Qt_6_5_3_for_macOS-Debug/tests/target_wrapper.sh /Users/hyperion/Documents/qt-projects/cpp-qt/problems/sprint3/template-calculator/build/Qt_6_5_3_for_macOS-Debug/tests/rcc_wrapper.sh /Users/hyperion/Documents/qt-projects/cpp-qt/problems/sprint3/template-calculator/build/Qt_6_5_3_for_macOS-Debug/tests/rcc_wrapper.sh /Users/hyperion/Documents/qt-projects/cpp-qt/problems/sprint3/template-calculator/build/Qt_6_5_3_for_macOS-Debug/tests/moc_wrapper.sh /Users/hyperion/Documents/qt-projects/cpp-qt/problems/sprint3/template-calculator/build/Qt_6_5_3_for_macOS-Debug/tests/uic_wrapper.sh /Users/hyperion/Documents/qt-projects/cpp-qt/problems/sprint3/template-calculator/build/Qt_6_5_3_for_macOS-Debug/tests/uic_wrapper.sh
 	-$(DEL_FILE) Makefile
 
 
@@ -642,7 +645,7 @@ xcodeproj:
 	@$(QMAKE) -spec macx-xcode "$(EXPORT__PRO_FILE_)" -spec macx-clang CONFIG+=debug CONFIG+=qml_debug
 
 check: first
-	/Users/hyperion/Documents/qt-projects/cpp-qt/problems/sprint2/final-task/build/Qt_6_5_3_for_macOS-Debug/tests/target_wrapper.sh $(TESTRUNNER) ./$(QMAKE_TARGET).app/Contents/MacOS/$(QMAKE_TARGET) $(TESTARGS)
+	/Users/hyperion/Documents/qt-projects/cpp-qt/problems/sprint3/template-calculator/build/Qt_6_5_3_for_macOS-Debug/tests/target_wrapper.sh $(TESTRUNNER) ./$(QMAKE_TARGET).app/Contents/MacOS/$(QMAKE_TARGET) $(TESTARGS)
 
 mocclean: compiler_moc_header_clean compiler_moc_objc_header_clean compiler_moc_source_clean
 
@@ -657,10 +660,13 @@ compiler_moc_header_clean:
 	-$(DEL_FILE) moc_mainwindow.cpp
 moc_mainwindow.cpp: ../../../submission/mainwindow.h \
 		../../../submission/calculator.h \
+		../../../submission/rational.h \
+		../../../submission/pow.h \
+		../../../submission/enums.h \
 		/Users/hyperion/Qt/6.5.3/macos/lib/QtWidgets.framework/Headers/QMainWindow \
 		/Users/hyperion/Qt/6.5.3/macos/lib/QtWidgets.framework/Headers/qmainwindow.h \
 		/Users/hyperion/Qt/6.5.3/macos/libexec/moc
-	/Users/hyperion/Documents/qt-projects/cpp-qt/problems/sprint2/final-task/build/Qt_6_5_3_for_macOS-Debug/tests/moc_wrapper.sh $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=201402L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=17 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/hyperion/Qt/6.5.3/macos/mkspecs/macx-clang -I/Users/hyperion/Documents/qt-projects/cpp-qt/problems/sprint2/final-task/tests -I/Users/hyperion/Documents/qt-projects/cpp-qt/problems/sprint2/final-task/submission -I/Users/hyperion/Documents/qt-projects/cpp-qt/mocks_library -I/Users/hyperion/Qt/6.5.3/macos/lib/QtWidgets.framework/Headers -I/Users/hyperion/Qt/6.5.3/macos/lib/QtGui.framework/Headers -I/Users/hyperion/Qt/6.5.3/macos/lib/QtTest.framework/Headers -I/Users/hyperion/Qt/6.5.3/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/17/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/hyperion/Qt/6.5.3/macos/lib ../../../submission/mainwindow.h -o moc_mainwindow.cpp
+	/Users/hyperion/Documents/qt-projects/cpp-qt/problems/sprint3/template-calculator/build/Qt_6_5_3_for_macOS-Debug/tests/moc_wrapper.sh $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=201402L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=17 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/hyperion/Qt/6.5.3/macos/mkspecs/macx-clang -I/Users/hyperion/Documents/qt-projects/cpp-qt/problems/sprint3/template-calculator/tests -I/Users/hyperion/Documents/qt-projects/cpp-qt/problems/sprint3/template-calculator/submission -I/Users/hyperion/Documents/qt-projects/cpp-qt/mocks_library -I/Users/hyperion/Qt/6.5.3/macos/lib/QtWidgets.framework/Headers -I/Users/hyperion/Qt/6.5.3/macos/lib/QtGui.framework/Headers -I/Users/hyperion/Qt/6.5.3/macos/lib/QtTest.framework/Headers -I/Users/hyperion/Qt/6.5.3/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/17/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/hyperion/Qt/6.5.3/macos/lib ../../../submission/mainwindow.h -o moc_mainwindow.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -681,25 +687,29 @@ tests.moc: ../../../tests/tests.cpp \
 		/Users/hyperion/Qt/6.5.3/macos/lib/QtTest.framework/Headers/qtesteventloop.h \
 		/Users/hyperion/Qt/6.5.3/macos/lib/QtTest.framework/Headers/qtestsystem.h \
 		/Users/hyperion/Qt/6.5.3/macos/lib/QtTest.framework/Headers/qttestversion.h \
-		/Users/hyperion/Qt/6.5.3/macos/lib/QtCore.framework/Headers/QCoreApplication \
-		/Users/hyperion/Qt/6.5.3/macos/lib/QtCore.framework/Headers/qcoreapplication.h \
 		../../../submission/mainwindow.h \
 		../../../submission/calculator.h \
+		../../../submission/rational.h \
+		../../../submission/pow.h \
+		../../../submission/enums.h \
 		/Users/hyperion/Qt/6.5.3/macos/lib/QtWidgets.framework/Headers/QMainWindow \
 		/Users/hyperion/Qt/6.5.3/macos/lib/QtWidgets.framework/Headers/qmainwindow.h \
+		../../../tests/utils.h \
+		../../../tests/calculator_tests.h \
+		../../../submission/controller.h \
 		/Users/hyperion/Documents/qt-projects/cpp-qt/mocks_library/test_utils/practicum_assert.hpp \
 		/Users/hyperion/Qt/6.5.3/macos/lib/QtCore.framework/Headers/QString \
 		/Users/hyperion/Qt/6.5.3/macos/lib/QtCore.framework/Headers/qstring.h \
 		/Users/hyperion/Qt/6.5.3/macos/lib/QtTest.framework/Headers/QTest \
 		/Users/hyperion/Qt/6.5.3/macos/libexec/moc
-	/Users/hyperion/Documents/qt-projects/cpp-qt/problems/sprint2/final-task/build/Qt_6_5_3_for_macOS-Debug/tests/moc_wrapper.sh $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=201402L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=17 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/hyperion/Qt/6.5.3/macos/mkspecs/macx-clang -I/Users/hyperion/Documents/qt-projects/cpp-qt/problems/sprint2/final-task/tests -I/Users/hyperion/Documents/qt-projects/cpp-qt/problems/sprint2/final-task/submission -I/Users/hyperion/Documents/qt-projects/cpp-qt/mocks_library -I/Users/hyperion/Qt/6.5.3/macos/lib/QtWidgets.framework/Headers -I/Users/hyperion/Qt/6.5.3/macos/lib/QtGui.framework/Headers -I/Users/hyperion/Qt/6.5.3/macos/lib/QtTest.framework/Headers -I/Users/hyperion/Qt/6.5.3/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/17/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/hyperion/Qt/6.5.3/macos/lib ../../../tests/tests.cpp -o tests.moc
+	/Users/hyperion/Documents/qt-projects/cpp-qt/problems/sprint3/template-calculator/build/Qt_6_5_3_for_macOS-Debug/tests/moc_wrapper.sh $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=201402L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=17 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/hyperion/Qt/6.5.3/macos/mkspecs/macx-clang -I/Users/hyperion/Documents/qt-projects/cpp-qt/problems/sprint3/template-calculator/tests -I/Users/hyperion/Documents/qt-projects/cpp-qt/problems/sprint3/template-calculator/submission -I/Users/hyperion/Documents/qt-projects/cpp-qt/mocks_library -I/Users/hyperion/Qt/6.5.3/macos/lib/QtWidgets.framework/Headers -I/Users/hyperion/Qt/6.5.3/macos/lib/QtGui.framework/Headers -I/Users/hyperion/Qt/6.5.3/macos/lib/QtTest.framework/Headers -I/Users/hyperion/Qt/6.5.3/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/17/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/hyperion/Qt/6.5.3/macos/lib ../../../tests/tests.cpp -o tests.moc
 
 compiler_uic_make_all: ui_mainwindow.h
 compiler_uic_clean:
 	-$(DEL_FILE) ui_mainwindow.h
 ui_mainwindow.h: ../../../submission/mainwindow.ui \
 		/Users/hyperion/Qt/6.5.3/macos/libexec/uic
-	/Users/hyperion/Documents/qt-projects/cpp-qt/problems/sprint2/final-task/build/Qt_6_5_3_for_macOS-Debug/tests/uic_wrapper.sh ../../../submission/mainwindow.ui -o ui_mainwindow.h
+	/Users/hyperion/Documents/qt-projects/cpp-qt/problems/sprint3/template-calculator/build/Qt_6_5_3_for_macOS-Debug/tests/uic_wrapper.sh ../../../submission/mainwindow.ui -o ui_mainwindow.h
 
 compiler_rez_source_make_all:
 compiler_rez_source_clean:
@@ -726,12 +736,16 @@ tests.o: ../../../tests/tests.cpp /Users/hyperion/Qt/6.5.3/macos/lib/QtTest.fram
 		/Users/hyperion/Qt/6.5.3/macos/lib/QtTest.framework/Headers/qtesteventloop.h \
 		/Users/hyperion/Qt/6.5.3/macos/lib/QtTest.framework/Headers/qtestsystem.h \
 		/Users/hyperion/Qt/6.5.3/macos/lib/QtTest.framework/Headers/qttestversion.h \
-		/Users/hyperion/Qt/6.5.3/macos/lib/QtCore.framework/Headers/QCoreApplication \
-		/Users/hyperion/Qt/6.5.3/macos/lib/QtCore.framework/Headers/qcoreapplication.h \
 		../../../submission/mainwindow.h \
 		../../../submission/calculator.h \
+		../../../submission/rational.h \
+		../../../submission/pow.h \
+		../../../submission/enums.h \
 		/Users/hyperion/Qt/6.5.3/macos/lib/QtWidgets.framework/Headers/QMainWindow \
 		/Users/hyperion/Qt/6.5.3/macos/lib/QtWidgets.framework/Headers/qmainwindow.h \
+		../../../tests/utils.h \
+		../../../tests/calculator_tests.h \
+		../../../submission/controller.h \
 		/Users/hyperion/Documents/qt-projects/cpp-qt/mocks_library/test_utils/practicum_assert.hpp \
 		/Users/hyperion/Qt/6.5.3/macos/lib/QtCore.framework/Headers/QString \
 		/Users/hyperion/Qt/6.5.3/macos/lib/QtCore.framework/Headers/qstring.h \
@@ -739,11 +753,11 @@ tests.o: ../../../tests/tests.cpp /Users/hyperion/Qt/6.5.3/macos/lib/QtTest.fram
 		tests.moc
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o tests.o ../../../tests/tests.cpp
 
-calculator.o: ../../../submission/calculator.cpp ../../../submission/calculator.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o calculator.o ../../../submission/calculator.cpp
-
 mainwindow.o: ../../../submission/mainwindow.cpp ../../../submission/mainwindow.h \
 		../../../submission/calculator.h \
+		../../../submission/rational.h \
+		../../../submission/pow.h \
+		../../../submission/enums.h \
 		/Users/hyperion/Qt/6.5.3/macos/lib/QtWidgets.framework/Headers/QMainWindow \
 		/Users/hyperion/Qt/6.5.3/macos/lib/QtWidgets.framework/Headers/qmainwindow.h \
 		ui_mainwindow.h \
