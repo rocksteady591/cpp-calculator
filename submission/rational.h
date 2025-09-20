@@ -62,42 +62,26 @@ public:
     }
 
     Rational operator+(const Rational& r2) const {
-        int a = numerator_ * r2.denominator_ + denominator_ * r2.numerator_;
-        int b = denominator_ * r2.denominator_;
         Rational result = *this;
-        result.numerator_ = a;
-        result.denominator_ = b;
-        result.Reduction();
+        result += r2;
         return result;
     }
 
     Rational operator-(const Rational& num) const {
-        int a = numerator_ * num.denominator_ - denominator_ * num.numerator_;
-        int b = denominator_ * num.denominator_;
         Rational result = *this;
-        result.numerator_ = a;
-        result.denominator_ = b;
-        result.Reduction();
+        result -= num;
         return result;
     }
 
     Rational operator*(const Rational& num) const {
-        int a = numerator_ * num.numerator_;
-        int b = denominator_ * num.denominator_;
         Rational result = *this;
-        result.numerator_ = a;
-        result.denominator_ = b;
-        result.Reduction();
+        result *= num;
         return result;
     }
 
     Rational operator/(const Rational& num) const {
-        int a = numerator_ * num.denominator_;
-        int b = denominator_ * num.numerator_;
         Rational result = *this;
-        result.numerator_ = a;
-        result.denominator_ = b;
-        result.Reduction();
+        result /= num;
         return result;
     }
 
